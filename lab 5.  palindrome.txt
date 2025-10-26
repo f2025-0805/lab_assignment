@@ -1,0 +1,29 @@
+#include <iostream>
+using namespace std;
+
+int main() {
+    int n;
+    
+    cout << "Enter a number: ";
+    cin >> n;
+    
+    cout << "Palindrome numbers from 1 to " << n << ":" << endl;
+    
+    for (int i = 1; i <= n; i++) {
+        int num = i;
+        int reverse = 0;
+        
+        // Reverse the number
+        while (num > 0) {
+            reverse = reverse * 10 + (num % 10);
+            num = num / 10;
+        }
+        
+        // Check if it's palindrome
+        if (i == reverse) {
+            cout << i << " ";
+        }
+    }
+    
+    return 0;
+}
