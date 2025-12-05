@@ -1,0 +1,15 @@
+#include <iostream>
+using namespace std;
+void attemptWitdrawl(int &balance,int amount){
+    cout<<"attempint withdraw..........."<<endl;
+    balance=balance-amount;
+    cout<<"withdrwal succesful.new balance inside function:"<<balance<<endl;
+}
+    int main(){
+        int balance=5000;
+        int withdraw=1200;
+        attemptWitdrawl(balance,withdraw);
+        cout<<"balance in main:"<<balance<<endl;
+        
+    return 0;
+}
