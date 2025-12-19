@@ -1,0 +1,60 @@
+#include <string>
+#include<vector>
+using namespace std;
+
+struct student{
+    string name;
+    int rollNo;
+    char section;
+    int batch;
+    bool enrolled;
+};
+student inputStudent(){
+    student s;
+    cout<<"enter the name:";
+    cin>>s.name;
+    cout<<"enter the roll no:";
+    cin>>s.rollNo;
+    cout<<"enter the section:";
+    cin>>s.section;
+    cout<<"enter the batch:";
+    cin>>s.batch;
+    cout<<"enter the enrollment(1 for yes and 0 for no)";
+    cin>>s.enrolled;
+    return s;
+}
+void printStudent(const student& s){
+    cout<<"student detail:"<<endl;
+    cout<<"name:"<<s.name<<endl;
+    cout<<"roll no:"<<s.rollNo<<endl;
+    cout<<"section"<<s.section<<endl;
+    cout<<"batch:"<<s.batch<<endl;
+    cout<<"enrolled:"<<s.enrolled<<endl;
+}
+void printAllStudents(vector<student>& students){
+    if(students.empty()){
+        cout<<"no students:"<<endl;
+        return;
+        
+    }
+    cout<<"all students:"<<endl;
+    for(int i=0;i<students.size();i++){
+        cout<<"students:"<<i+1<<endl;
+        printStudent(students[i]);
+        }
+}
+int main(){
+   vector<student> students;
+   int n;
+   cout<<"how many sudents?:"<<endl;
+   cin>>n;
+   for(int i=0;i<n;i++){
+    cout<<"student"<<i+1<<"==";
+    students.push_back(inputStudent());
+   }
+   printAllStudents(students);
+   return 0;
+}
+
+
+
