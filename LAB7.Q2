@@ -1,0 +1,129 @@
+#include <iostream>
+using namespace std;
+
+int sumDigits(int n) {
+    int sum = 0;
+    
+   
+    if (n < 0) {
+        n = -n;
+    }
+    
+    while (n > 0) {
+        sum += n % 10;  
+        n /= 10;        
+    }
+    return sum;
+}
+
+bool isDivisibleBy3(int n) {
+    int sum = sumDigits(n);
+    return (sum % 3 == 0);
+}
+
+
+bool isDivisibleBy3Direct(int n) {
+    return (n % 3 == 0);
+}
+
+
+int main() {
+    cout << "=== DIVISIBILITY BY 3 CHECKER ===\n" << endl;
+    
+    // Test cases
+    int testNumbers[] = {123, 456, 789, 12, 37, 0, -123, 999};
+    int numTests = sizeof(testNumbers) / sizeof(testNumbers[0]);
+    
+    cout << "Number\tSum of Digits\tDivisible by 3?" << endl;
+    cout << "----------------------------------------" << endl;
+    
+    for (int i = 0; i < numTests; i++) {
+        int num = testNumbers[i];
+        int sum = sumDigits(num);
+        bool divisible = isDivisibleBy3(num);
+        
+        cout << num << "\t" << sum << "\t\t";
+        if (divisible) {
+            cout << "Yes";
+        } else {
+            cout << "No";
+        }
+        cout << endl;
+    }
+    
+    // Interactive mode
+    cout << "\n=== INTERACTIVE MODE ===" << endl;
+    int choice;
+    
+    do {
+        cout << "\n1. Check a single number" << endl;
+        cout << "2. Check range of numbers" << endl;
+        cout << "3. Exit" << endl;
+        cout << "Enter choice: ";
+        cin >> choice;
+        
+        switch(choice) {
+            case 1: {
+                int num;
+                cout << "Enter a number: ";
+                cin >> num;
+                
+                int sum = sumDigits(num);
+                bool divisible = isDivisibleBy3(num);
+                
+                cout << "\nNumber: " << num << endl;
+                cout << "Sum of digits: " << sum << endl;
+                cout << "Divisible by 3? ";
+                if (divisible) {
+                    cout << "YES (because " << sum << " % 3 = " << sum % 3 << ")" << endl;
+                } else {
+                    cout << "NO (because " << sum << " % 3 = " << sum % 3 << ")" << endl;
+                }
+                break;
+            }
+            
+            case 2: {
+                int start, end;
+                cout << "Enter start number: ";
+                cin >> start;
+                cout << "Enter end number: ";
+                cin >> end;
+                
+                if (start > end) {
+                    int temp = start;
+                    start = end;
+                    end = temp;
+                    cout << "Swapped range: " << start << " to " << end << endl;
+                }
+                
+                cout << "\nNumbers divisible by 3 between " << start << " and " << end << ":" << endl;
+                cout << "------------------------------------------------" << endl;
+                
+                int count = 0;
+                for (int i = start; i <= end; i++) {
+                    if (isDivisibleBy3(i)) {
+                        cout << i << " ";
+                        count++;
+                        
+                       
+                        if (count % 10 == 0) {
+                            cout << endl;
+                        }
+                    }
+                }
+                
+                cout << "\n\nTotal: " << count << " numbers" << endl;
+                break;
+            }
+            
+            case 3:
+                cout << "Goodbye!" << endl;
+                break;
+                
+            default:
+                cout << "Invalid choice! Please try again." << endl;
+        }
+    } while (choice != 3);
+    
+    return 0;
+}
