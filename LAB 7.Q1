@@ -1,0 +1,43 @@
+#include <iostream>
+using namespace std;
+
+void printTable(int num) {
+    cout << "\nMultiplication Table of " << num << ":" << endl;
+    cout << "----------------------------" << endl;
+    for (int i = 1; i <= 10; i++) {
+        cout << num << " x " << i << " = " << num * i << endl;
+    }
+void printTableRange(int start, int end) {
+    if (start > end) {
+        cout << "Error: Start should be less than or equal to end!" << endl;
+        return;
+    }
+    
+    if (start < 1) {
+        cout << "Error: Please enter positive numbers only!" << endl;
+        return;
+    }
+    
+    cout << "\n========================================" << endl;
+    cout << "   PRINTING TABLES FROM " << start << " TO " << end << endl;
+    cout << "========================================\n" << endl;
+    
+    
+    for (int num = start; num <= end; num++) {
+        printTable(num);
+        cout << endl; 
+    }
+}
+
+int main() {
+    int start, end;
+    
+    cout << "Enter starting number: ";
+    cin >> start;
+    cout << "Enter ending number: ";
+    cin >> end;
+    
+    printTableRange(start, end);
+    
+    return 0;
+}
